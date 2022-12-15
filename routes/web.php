@@ -30,7 +30,7 @@ Route::prefix('admin')->name('admin.')->group(
         Route::get('login', [AdminController::class, 'index'])->name('login');
 
         // admin/bookings -> /admin/bookings/{route}
-        Route::middleware('auth')->prefix('bookings')->group(
+        Route::middleware('auth', 'admin')->prefix('bookings')->group(
             function () {
                 Route::get('/', [AdminBookingController::class, 'index'])->name('booking.index');
                 Route::get('/edit/{uuid}', [AdminBookingController::class, 'edit'])->name('booking.edit');
