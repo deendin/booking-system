@@ -20,6 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'role' => fake()->randomElement(['user', 'admin']),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
@@ -36,5 +37,31 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    /**
+     * Admin users state.
+     * 
+     */
+    public function admin()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role' => 'admin',
+            ];
+        });
+    }
+
+    /**
+     * Normal users state
+     * 
+     */
+    public function user()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role' => 'user'
+            ];
+        });
     }
 }
