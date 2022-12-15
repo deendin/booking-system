@@ -1,0 +1,11 @@
+.alert-danger {
+    color:rgb(206, 66, 66);
+    border-radius: 5px;
+}
+
+.alert-success {
+    color:#4CAF50;
+    border-radius: 5px;
+    font-size: large;
+    margin-left: 40%;
+}
