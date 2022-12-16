@@ -12,6 +12,18 @@ class CreateUser
      */
     public function create(array $data)
     {
+        $user = User::whereEmail($data['email'])->first();
+
+        // @todo - possibly refactor to use updateOrCreate()?
+        if ($user) {
+
+            $user->update([
+                'name' => $data['name']
+            ]);
+
+            return $user;
+        }
+
         $user = new User();
 
         $user->name = $data['name'];
