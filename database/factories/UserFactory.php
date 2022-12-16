@@ -64,4 +64,18 @@ class UserFactory extends Factory
             ];
         });
     }
+
+    /**
+     * Default admin for the djValentineCompany.
+     * 
+     */
+    public function defaultAdmin()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role' => 'admin',
+                'email' => 'admin@djvalentinecars.com',
+            ];
+        });
+    }
 }
