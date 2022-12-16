@@ -17,7 +17,7 @@
         <div class="container">  
             <h2>All Bookings</h2>
             
-        @if(session()->has('success'))
+            @if(session()->has('success'))
                 <div class="alert alert-success">
                     {{ session()->get('success') }}
                 </div> <br>
