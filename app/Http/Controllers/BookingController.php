@@ -34,9 +34,14 @@ class BookingController extends Controller
     {
         $booking = app(CreateBooking::class);
 
-        $booking->create($request->all());
+        $data  = $booking->create($request->all());
 
-        return redirect()->back()->with('success', 'Booking created successfully!');
+        // Upgrade to use uuid or strings?
+        $booking_id = $data->id;
+
+        $booking_details = !auth()->user() ? "Your booking id is : ${booking_id}" : null;
+
+        return redirect()->back()->with('success', "Booking created successfully! $booking_details");
     }
 
     /**
